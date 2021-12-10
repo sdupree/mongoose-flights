@@ -17,6 +17,7 @@
     </tr>
   </tbody>
 </table>
+<% if(flight.destinations.length) { %>
 <h2>Additional Destinations:</h2>
 <table id="list">
   <thead>
@@ -35,6 +36,7 @@
     </tbody>
   </tbody>
 </table>
+<% } %>
 <% if(availableDestinations.length) { %>
 <h2>Add New Destination:</h2>
 <form method="POST" action="/flights/<%= flight._id %>/destinations">
