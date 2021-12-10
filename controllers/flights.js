@@ -44,7 +44,8 @@ function create(req, res) {
 
 function show(req, res) {
   Flight.findById(req.params.id, function (err, flight) {
+    flight.destinations.sort((a, b) => {return Date.parse(a.arrives) - Date.parse(b.arrives)});
     flight.hasPassed = Date.parse(flight.departs) < Date.now();
-    res.render('flights/show', { title: 'Flight Detail', flight });
+    res.render('flights/show', { title: 'Flight Detail', flight, flightConsts });
   });
 }

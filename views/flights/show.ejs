@@ -17,4 +17,38 @@
     </tr>
   </tbody>
 </table>
+<h2>Additional Destinations:</h2>
+<table id="list">
+  <thead>
+    <tr>
+      <th>Destination</th>
+      <th>Arrives</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% flight.destinations.forEach(function(dest) { %>
+      <tr>
+        <td><%= dest.airport %></td>
+        <td><%= dest.arrives %></td>
+      </tr>
+    <% }); %>
+    </tbody>
+  </tbody>
+</table>
+<h2>Add New Destination:</h2>
+<form method="POST" action="/flights/<%= flight._id %>/destinations">
+  <label for="airport">Airport:</label>
+  <select name="airport">
+    <% flightConsts.airports.forEach(function(airport) {
+      if(airport === flight.airport) return;
+      for(let i = 0; i < flight.destinations.length; i++) { if(flight.destinations[i].airport === airport) return; } %>
+      <option value="<%= airport %>"><%= airport %></option>
+    <% }); %>
+  </select>
+  <br><br>
+  <label>Arrival Time</label>
+  <input type="datetime-local" name="arrives">
+  <br><br>
+  <input type="submit" value="Add Destination">
+</form>
 <%- include('../partials/footer') %>
