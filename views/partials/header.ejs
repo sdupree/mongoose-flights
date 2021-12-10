@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <nav>
+      <img src="/images/plane.svg">
+      <span>Flight Tracker</span>
+      <a href="/flights/new" <%- title === 'Add Flight' ? 'class="active"' : '' %>>Add Flight</a>
+      <a href="/flights" <%- title === 'All Flights' ? 'class="active"' : '' %>>All Flights</a>
+    </nav>
+    <main>
+      <h1><%= title %></h1>

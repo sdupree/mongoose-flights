@@ -1,0 +1,25 @@
+<%- include('../partials/header') %>
+<form method="POST" action="/flights">
+  <label>Airline:</label>
+  <select name="airline">
+    <% flightConsts.airlines.forEach(function(airline) { %>
+      <option value="<%= airline %>"><%= airline %></option>
+      <% }); %>
+    </select>
+    <br><br>
+    <label for="airport">Airport:</label>
+    <select name="airport">
+    <% flightConsts.airports.forEach(function(airport) { %>
+      <option value="<%= airport %>"<%= airport === 'DEN' ? ' selected' : ''; %>><%= airport %></option>
+    <% }); %>
+  </select>
+  <br><br>
+  <label>Flight Number:</label>
+  <input type="text" name="flightNo">
+  <br><br>
+  <label>Departure Time</label>
+  <input type="datetime-local" name="departs" value="<%= dateVal %>">
+  <br><br>
+  <input type="submit" value="Add Flight">
+</form>
+<%- include('../partials/footer') %>
