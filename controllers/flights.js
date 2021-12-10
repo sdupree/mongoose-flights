@@ -3,7 +3,8 @@ const Flight = require("../models/flight");
 module.exports = {
   index,
   new: newFlight,
-  create
+  create,
+  show
 };
 
 const flightConsts = {
@@ -34,9 +35,16 @@ function newFlight(req, res) {
 }
 
 function create(req, res) {
-    var flight = new Flight(req.body);
-    flight.save(function (err) {
-      if (err) return res.redirect('/flights/new');
-      res.redirect('/flights');
-    });
+  var flight = new Flight(req.body);
+  flight.save(function (err) {
+    if (err) return res.redirect('/flights/new');
+    res.redirect('/flights');
+  });
+}
+
+function show(req, res) {
+  Flight.findById(req.params.id, function (err, flight) {
+    flight.hasPassed = Date.parse(flight.departs) < Date.now();
+    res.render('flights/show', { title: 'Flight Detail', flight });
+  });
 }
