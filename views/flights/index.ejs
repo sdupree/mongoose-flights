@@ -18,8 +18,8 @@
         <td<%- flight.hasPassed ? ' class="has-passed"' : '' %>><%= flight.departs %></td>
         <td><a href="/flights/<%= flight._id %>">Get Details</a></td>
       </tr>
-      <% }); %>
-    </tbody>
-  </table>
-  
+    <% }); %>
+  </tbody>
+</table>
+
 <%- include('../partials/footer') %>

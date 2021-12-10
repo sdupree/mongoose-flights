@@ -1,9 +1,9 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
-var methodOverride = require('method-override');
+const createError = require('http-errors');
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
+const methodOverride = require('method-override');
 
 // Load configuration from file.
 require('dotenv').config();
@@ -12,11 +12,12 @@ require('dotenv').config();
 require('./config/database');
 
 // Set up routers.
-var indexRouter = require('./routes/index');
-var flightsRouter = require('./routes/flights');
-var destinationsRouter = require('./routes/destinations');
+const indexRouter = require('./routes/index');
+const flightsRouter = require('./routes/flights');
+const destinationsRouter = require('./routes/destinations');
+const ticketsRouter = require('./routes/tickets');
 
-var app = express();
+const app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -32,6 +33,7 @@ app.use(methodOverride('_m'));
 app.use('/', indexRouter);
 app.use('/flights', flightsRouter);
 app.use('/', destinationsRouter);
+app.use('/', ticketsRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

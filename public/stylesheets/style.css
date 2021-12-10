@@ -140,3 +140,16 @@ table td {
 .has-passed {
   color: red;
 }
+
+.big-a {
+  border-radius: 6px;
+  border: solid 2px #000;
+  background-color: #B8C0C2;
+  padding: 8px;
+  text-decoration: none;
+  font-size: 20px;
+}
+
+.big-a:hover {
+  background-color: white;
+}
