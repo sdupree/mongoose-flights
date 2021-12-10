@@ -1,5 +1,5 @@
 <%- include('../partials/header') %>
-<table id="list">
+<table class="list">
   <thead>
     <tr>
       <th>Airline</th>
@@ -19,7 +19,7 @@
 </table>
 <% if(flight.destinations.length) { %>
 <h2>Additional Destinations:</h2>
-<table id="list">
+<table class="list">
   <thead>
     <tr>
       <th>Destination</th>
@@ -52,6 +52,23 @@
   <br><br>
   <input type="submit" value="Add Destination">
 </form>
+<% } %>
+<br><br>
+<% if(tickets.length) { %>
+<h2>Tickets:</h2>
+<table class="list">
+  <thead>
+    <tr>
+      <th>Seat</th>
+      <th>Price ($)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <%- tickets.map(ticket => 
+      `<tr><td>${ticket.seat}</td><td>${ticket.price}</td></tr>`
+      ).join('') %>
+  </tbody>
+</table>
 <% } %>
 <br><br>
 <a class="big-a" href="/flights/<%= flight._id %>/tickets/new">Add New Ticket</a>

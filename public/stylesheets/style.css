@@ -99,11 +99,11 @@ table td {
   text-align: center;
 }
 
-#list td:nth-child(2), #list td:nth-child(3){
+.list td:nth-child(2), .list td:nth-child(3){
   min-width: 100px;
 }
 
-#list a {
+.list a {
   border-radius: 4px;
   background-color: #B8C0C2;
   padding: 4px;
@@ -111,7 +111,7 @@ table td {
   font-size: 14px;
 }
 
-#list a:hover {
+.list a:hover {
   background-color: white;
 }
 
