@@ -46,6 +46,12 @@ function show(req, res) {
   Flight.findById(req.params.id, function (err, flight) {
     flight.destinations.sort((a, b) => {return Date.parse(a.arrives) - Date.parse(b.arrives)});
     flight.hasPassed = Date.parse(flight.departs) < Date.now();
-    res.render('flights/show', { title: 'Flight Detail', flight, flightConsts });
+    const availableDestinations = [];
+    flightConsts.airports.forEach(function(airport) {
+      if(airport === flight.airport) return;
+      for(let i = 0; i < flight.destinations.length; i++) { if(flight.destinations[i].airport === airport) return; }
+      availableDestinations.push(airport);
+    });
+    res.render('flights/show', { title: 'Flight Detail', flight, flightConsts, availableDestinations });
   });
 }
