@@ -61,11 +61,12 @@
     <tr>
       <th>Seat</th>
       <th>Price ($)</th>
+      <th>Delete?</th>
     </tr>
   </thead>
   <tbody>
     <%- tickets.map(ticket => 
-      `<tr><td>${ticket.seat}</td><td>${ticket.price}</td></tr>`
+      `<tr><td>${ticket.seat}</td><td>${ticket.price}</td><td><form action="/tickets/${ticket._id}?_m=DELETE" method="post"><button type=submit>Delete Ticket</button></form></td></tr>`
       ).join('') %>
   </tbody>
 </table>

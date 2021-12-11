@@ -15,7 +15,6 @@ const flightConsts = {
 
 function index(req, res) {
   const sort = req.query.sort || 'asc';
-  console.log(sort);
   Flight.find({}, function (err, flights) {
     if(sort === 'asc') {
       // Sort flights in ascending order of departure time.

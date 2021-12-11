@@ -10,3 +10,6 @@ router.get('/flights/:flightId/tickets/new', ticketsCtrl.new);
 // POST "/flights/:flightId/tickets" -- Create route.
 router.post('/flights/:flightId/tickets', ticketsCtrl.create);
 
+// DELETE "/tickets/:id" -- Delete route.
+router.delete('/tickets/:id', ticketsCtrl.delete);
+
